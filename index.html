@@ -4,96 +4,130 @@
 <meta charset="UTF-8">
 <title>BuuDark - Ciberseguridad & Hacking Ético</title>
 <style>
-  body {
-    margin: 0;
-    font-family: Consolas, monospace;
-    background: #0a0f14 url('https://i.imgur.com/7Yj7uJP.jpeg') no-repeat center center fixed;
-    background-size: cover;
-    color: #00ffc3;
-    overflow-x: hidden;
+  /* Reset y fuente */
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:Consolas, monospace;overflow-x:hidden;background:black;color:#00ffc3;}
+
+  /* Fondo tipo Matrix / cyberpunk */
+  canvas#matrixCanvas{
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:-1;
+    width:100%;
+    height:100%;
   }
 
-  /* Header y Navegación */
-  header {
-    background: rgba(0,0,0,0.75);
-    padding: 20px;
-    border-bottom: 1px solid #00ffc3;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  /* Header y navegación */
+  header{
+    background:rgba(0,0,0,0.75);
+    padding:20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-bottom:1px solid #00ffc3;
   }
-  header h1 {
-    margin: 0;
-    font-size: 28px;
-    color: #00ffc3;
-    text-shadow: 0 0 15px #00ffc3;
+  header h1{
+    font-size:28px;
+    color:#00ffc3;
+    text-shadow:0 0 15px #00ffc3;
+    animation: glow 2s ease-in-out infinite alternate;
   }
-  nav a {
-    margin-left: 20px;
-    color: #00ffc3;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 18px;
-    transition: 0.3s;
+  nav a{
+    margin-left:20px;
+    color:#00ffc3;
+    text-decoration:none;
+    font-weight:bold;
+    font-size:18px;
+    position:relative;
   }
-  nav a:hover {
-    color: #1affd6;
-    text-shadow: 0 0 10px #1affd6;
+  nav a::after{
+    content:"";
+    display:block;
+    height:2px;
+    background:#00ffc3;
+    transition: width 0.3s;
+    width:0;
+  }
+  nav a:hover::after{width:100%;}
+
+  /* Animación glow */
+  @keyframes glow{
+    0%{text-shadow:0 0 10px #00ffc3;}
+    100%{text-shadow:0 0 30px #00ffc3,0 0 50px #00ffc3;}
   }
 
-  /* Contenedor Principal */
-  .container {
-    text-align: center;
-    padding: 120px 20px;
+  /* Contenedor principal */
+  .container{
+    text-align:center;
+    padding:120px 20px;
   }
-  .container h2 {
-    font-size: 50px;
-    text-shadow: 0 0 20px #00ffc3;
+  .container h2{
+    font-size:50px;
+    text-shadow:0 0 20px #00ffc3;
+    animation: glitch 2s infinite;
   }
-  .container p {
-    max-width: 700px;
-    margin: 20px auto;
-    font-size: 20px;
-    line-height: 1.7;
+  .container p{
+    max-width:700px;
+    margin:20px auto;
+    font-size:20px;
+    line-height:1.7;
+  }
+  .btn{
+    display:inline-block;
+    margin-top:40px;
+    padding:15px 40px;
+    background:#00ffc3;
+    color:#000;
+    text-decoration:none;
+    font-weight:bold;
+    border-radius:8px;
+    font-size:20px;
+    box-shadow:0 0 10px #00ffc3;
+    transition:0.3s;
+  }
+  .btn:hover{
+    background:#1affd6;
+    box-shadow:0 0 20px #1affd6;
   }
 
-  /* Botón principal */
-  .btn {
-    display: inline-block;
-    margin-top: 40px;
-    padding: 15px 40px;
-    background: #00ffc3;
-    color: #000;
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 8px;
-    font-size: 20px;
-    box-shadow: 0 0 10px #00ffc3;
-    transition: 0.3s;
-  }
-  .btn:hover {
-    background: #1affd6;
-    box-shadow: 0 0 20px #1affd6;
+  /* Efecto glitch */
+  @keyframes glitch{
+    0%{text-shadow: 2px 0 #00ffc3, -2px 2px #ff00ff;}
+    20%{text-shadow:-2px -2px #ff00ff,2px 2px #00ffc3;}
+    40%{text-shadow:2px 2px #00ffc3,-2px -2px #ff00ff;}
+    60%{text-shadow:-2px 2px #ff00ff,2px -2px #00ffc3;}
+    80%{text-shadow:2px -2px #00ffc3,-2px 2px #ff00ff;}
+    100%{text-shadow:2px 0 #00ffc3, -2px 2px #ff00ff;}
   }
 
-  /* Animación de fondo tipo partículas */
-  @keyframes float {
-    0% {transform: translateY(0);}
-    50% {transform: translateY(-20px);}
-    100% {transform: translateY(0);}
-  }
-  .particle {
-    position: absolute;
-    width: 3px;
-    height: 3px;
-    background: #00ffc3;
-    border-radius: 50%;
-    opacity: 0.7;
+  /* Partículas */
+  .particle{
+    position:absolute;
+    width:3px;
+    height:3px;
+    background:#00ffc3;
+    border-radius:50%;
+    opacity:0.7;
     animation: float 4s infinite ease-in-out;
+  }
+  @keyframes float{
+    0%{transform:translateY(0);}
+    50%{transform:translateY(-20px);}
+    100%{transform:translateY(0);}
+  }
+
+  /* Responsive */
+  @media(max-width:768px){
+    .container h2{font-size:36px;}
+    .container p{font-size:16px;}
   }
 </style>
 </head>
 <body>
+
+<!-- Fondo tipo Matrix -->
+<canvas id="matrixCanvas"></canvas>
 
 <header>
   <h1>BuuDark</h1>
@@ -114,15 +148,44 @@
 
 <!-- Partículas -->
 <script>
-  for(let i=0;i<50;i++){
-    let particle=document.createElement('div');
-    particle.className='particle';
-    particle.style.left=Math.random()*window.innerWidth+'px';
-    particle.style.top=Math.random()*window.innerHeight+'px';
-    particle.style.animationDelay=Math.random()*5+'s';
-    document.body.appendChild(particle);
+for(let i=0;i<50;i++){
+  let particle=document.createElement('div');
+  particle.className='particle';
+  particle.style.left=Math.random()*window.innerWidth+'px';
+  particle.style.top=Math.random()*window.innerHeight+'px';
+  particle.style.animationDelay=Math.random()*5+'s';
+  document.body.appendChild(particle);
+}
+
+// Matrix background
+const canvas=document.getElementById('matrixCanvas');
+const ctx=canvas.getContext('2d');
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+
+const letters='ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+const fontSize=16;
+const columns=canvas.width/fontSize;
+const drops=[];
+
+for(let x=0;x<columns;x++) drops[x]=1;
+
+function draw(){
+  ctx.fillStyle='rgba(0,0,0,0.05)';
+  ctx.fillRect(0,0,canvas.width,canvas.height);
+  ctx.fillStyle='#00ff00';
+  ctx.font=fontSize+'px monospace';
+  for(let i=0;i<drops.length;i++){
+    const text=letters.charAt(Math.floor(Math.random()*letters.length));
+    ctx.fillText(text,i*fontSize,drops[i]*fontSize);
+    if(drops[i]*fontSize>canvas.height && Math.random()>0.975) drops[i]=0;
+    drops[i]++;
   }
+  requestAnimationFrame(draw);
+}
+draw();
 </script>
 
 </body>
 </html>
+
