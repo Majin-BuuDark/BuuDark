@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>BuuDark - Ciberseguridad & Hacking Ético</title>
+<style>
+  body {
+    margin: 0;
+    font-family: Consolas, monospace;
+    background: #0a0f14 url('https://i.imgur.com/7Yj7uJP.jpeg') no-repeat center center fixed;
+    background-size: cover;
+    color: #00ffc3;
+    overflow-x: hidden;
+  }
+
+  /* Header y Navegación */
+  header {
+    background: rgba(0,0,0,0.75);
+    padding: 20px;
+    border-bottom: 1px solid #00ffc3;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  header h1 {
+    margin: 0;
+    font-size: 28px;
+    color: #00ffc3;
+    text-shadow: 0 0 15px #00ffc3;
+  }
+  nav a {
+    margin-left: 20px;
+    color: #00ffc3;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.3s;
+  }
+  nav a:hover {
+    color: #1affd6;
+    text-shadow: 0 0 10px #1affd6;
+  }
+
+  /* Contenedor Principal */
+  .container {
+    text-align: center;
+    padding: 120px 20px;
+  }
+  .container h2 {
+    font-size: 50px;
+    text-shadow: 0 0 20px #00ffc3;
+  }
+  .container p {
+    max-width: 700px;
+    margin: 20px auto;
+    font-size: 20px;
+    line-height: 1.7;
+  }
+
+  /* Botón principal */
+  .btn {
+    display: inline-block;
+    margin-top: 40px;
+    padding: 15px 40px;
+    background: #00ffc3;
+    color: #000;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 8px;
+    font-size: 20px;
+    box-shadow: 0 0 10px #00ffc3;
+    transition: 0.3s;
+  }
+  .btn:hover {
+    background: #1affd6;
+    box-shadow: 0 0 20px #1affd6;
+  }
+
+  /* Animación de fondo tipo partículas */
+  @keyframes float {
+    0% {transform: translateY(0);}
+    50% {transform: translateY(-20px);}
+    100% {transform: translateY(0);}
+  }
+  .particle {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: #00ffc3;
+    border-radius: 50%;
+    opacity: 0.7;
+    animation: float 4s infinite ease-in-out;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>BuuDark</h1>
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="manuales.html">Manuales</a>
+    <a href="sobre.html">Sobre mí</a>
+    <a href="contacto.html">Contacto</a>
+  </nav>
+</header>
+
+<div class="container">
+  <h2>Bienvenido a BuuDark</h2>
+  <p>Formación profesional en ciberseguridad y hacking ético.  
+     Manuales, guías y recursos educativos diseñados para el aprendizaje responsable y legal de la seguridad informática.</p>
+  <a class="btn" href="contacto.html">Contactar por Telegram</a>
+</div>
+
+<!-- Partículas -->
+<script>
+  for(let i=0;i<50;i++){
+    let particle=document.createElement('div');
+    particle.className='particle';
+    particle.style.left=Math.random()*window.innerWidth+'px';
+    particle.style.top=Math.random()*window.innerHeight+'px';
+    particle.style.animationDelay=Math.random()*5+'s';
+    document.body.appendChild(particle);
+  }
+</script>
+
+</body>
+</html>
